@@ -20,7 +20,7 @@ def upload_note(root, note: EvernoteNote, note_blocks):
     new_page = _make_page(note, root)
 
     progress_iter = tqdm(
-        iterable=note_blocks, unit="block", leave=False, ncols=PROGRESS_BAR_WIDTH
+        iterable=note_blocks, unit="block", leave=False, ncols=PROGRESS_BAR_WIDTH, desc="[{}]".format(note.title)
     )
 
     try:

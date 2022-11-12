@@ -26,7 +26,7 @@ def cli(argv):
     root = get_root(args.token, args.root_page)
 
     enex_uploader = EnexUploader(
-        import_root=root, mode=args.mode, done_file=args.done_file, rules=rules
+        import_root=root, mode=args.mode, done_file=args.done_file, rules=rules, parallelism=int(args.parallelism)
     )
 
     _process_input(enex_uploader, args.enex_input)

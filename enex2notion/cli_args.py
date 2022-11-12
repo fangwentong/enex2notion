@@ -82,6 +82,10 @@ def parse_args(argv):
             "action": "store_true",
             "help": "like --condense-lines but leaves gaps between paragraphs",
         },
+        "--parallelism": {
+            "default": "1",
+            "help": "upload notes in parallel to accelerate upload progress",
+        },
         "--done-file": {
             "type": Path,
             "metavar": "FILE",

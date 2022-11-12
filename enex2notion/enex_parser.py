@@ -66,9 +66,13 @@ def _parse_resources(note_raw):
 def _is_webclip(note_raw: dict):
     note_attrs = note_raw.get("note-attributes") or {}
 
-    if "web.clip" in note_attrs.get("source", ""):
-        return True
-    if "webclipper" in note_attrs.get("source-application", ""):
+    source = note_attrs.get("source", "")
+    source_application = note_attrs.get("source-application", "")
+    source_url = note_attrs.get("source-url", "")
+
+    if len(source_url) > 0 \
+            or any(s in source for s in ["web.clip"]) \
+            or any(sa in source_application for sa in ["微信", "新浪微博", "Pages", "webclipper"]):
         return True
 
     return bool(
